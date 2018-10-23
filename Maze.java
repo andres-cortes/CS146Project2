@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Maze
 {
@@ -42,6 +43,8 @@ public class Maze
 		// (height*width -1)
 		// by default, all cells start with color = white
 		// if an encountered cell is grey, do not knock down wall
-
+		Random rand = new Random(seed);
+		Cell current = cells.get(0);
+		double direction = rand.nextDouble();
 	}
 }
