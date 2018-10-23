@@ -1,2 +1,2 @@
 # CS151Project2
-Project 2 for CS 151
+By Andres Cortes and Irina Voronova
