@@ -7,4 +7,29 @@ public class MazeDrawer
 	{
 		this.maze = maze;
 	}
+
+	public void drawUnsolved()
+	{
+
+	}
+
+	public void drawSolvedPathBFS()
+	{
+
+	}
+
+	public void drawSolvedTimedBFS()
+	{
+
+	}
+
+	public void drawSolvedPathDFS()
+	{
+
+	}
+
+	public void drawSolvedTimedDFS()
+	{
+
+	}
 }
