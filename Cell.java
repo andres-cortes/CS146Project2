@@ -39,13 +39,10 @@ public class Cell
 		south = input;
 	}
 
-	public Cell[] getNeighbors()
-	{
-		Cell[] ret =
-		{ west, north, east, south };
-		return ret;
-	}
-
+	/*
+	 * public Cell[] getNeighbors() { Cell[] ret = { west, north, east, south };
+	 * return ret; }
+	 */
 	public void setColor(int color)
 	{
 		assert (color == 0 || color == 1 || color == 2);
@@ -57,16 +54,21 @@ public class Cell
 		return color;
 	}
 
-	public String toString()
+	public boolean hasWestNeighbor()
 	{
-		if (color == WHITE)
+		if (west == null)
 		{
-			return "WHITE";
+			return false;
 		}
-		else if (color == GREY)
+		return true;
+	}
+
+	public boolean hasSouthNeighbor()
+	{
+		if (south == null)
 		{
-			return "GREY";
+			return false;
 		}
-		return "BLACK";
+		return true;
 	}
 }
