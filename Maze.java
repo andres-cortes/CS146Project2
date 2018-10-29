@@ -39,19 +39,16 @@ public class Maze
 		Random rand = new Random(seed);
 		Stack<Integer> stack = new Stack<>();
 
-		// note that currentIndex and the current cell are being tracked to reduce
-		// amount of accessing the cell ArrayList
+		// note that currentIndex and the current cell are both given variables to
+		// reduce amount of accessing the cell ArrayList
 		Cell current = cells.get(0);
 		int currentIndex = 0;
-
-		int visitedCells = 0;
+		int visitedCells = 1;
 
 		while (visitedCells < totalCells)
 		{
 			// current cell has been visited
 			current.setColor(Cell.GREY);
-			visitedCells++;
-
 			// array will keep track of neighbors that are valid to visit, -1 indicates that
 			// it is invalid
 			int possibleNextIndex[] =
@@ -91,23 +88,25 @@ public class Maze
 			{
 				boolean chosen = false;
 				double decide;
+				visitedCells++;
 				// loop will guarantee that a cell will be visited, a better implementation
 				// would not check every direction, and only check valid directions (valid as
 				// defined above)
+
 				while (!chosen)
 				{
 					decide = rand.nextDouble();
 					if (decide <= 0.25)
 					{
-						// go east
+						// go west
 						if (possibleNextIndex[0] != -1)
 						{
 							// repeated code, can move this to a helper function
 							int next = possibleNextIndex[0];
 							chosen = true;
-							// link east cell to current
-							current.setEast(cells.get(next));
-							cells.get(next).setWest(current);
+							// link west cell to current
+							current.setWest(cells.get(next));
+							cells.get(next).setEast(current);
 							// push current onto stack (so we can backtrack if necessary)
 							stack.push(currentIndex);
 							// move current to newly linked cell
@@ -131,13 +130,13 @@ public class Maze
 					}
 					else if (decide <= 0.75)
 					{
-						// go west
+						// go east
 						if (possibleNextIndex[2] != -1)
 						{
 							int next = possibleNextIndex[2];
 							chosen = true;
-							current.setWest(cells.get(next));
-							cells.get(next).setEast(current);
+							current.setEast(cells.get(next));
+							cells.get(next).setWest(current);
 							stack.push(currentIndex);
 							currentIndex = next;
 							current = cells.get(next);
@@ -158,6 +157,7 @@ public class Maze
 						}
 					}
 				} // end inner while loop (make sure a direction is chosen)
+
 			} // end else
 		} // end outer while loop (visit all cells)
 	}

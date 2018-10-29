@@ -29,15 +29,15 @@ public class MazeDrawer
 		// below index totalCells-1.
 		//
 		// Rows that contain cells will always have a space where the cell is, the '|'
-		// wall will be present if the cell has a link to its neighbor. To make this
-		// easy to code, we can always put a '|' as the first character, then a space
-		// for the cell, and then check if the cell has an east neighbor. If it does, do
-		// not put a '|', etc. For the next row (row without cells), we will re check
-		// the same row and check if it has a south neighbor
-		String output = "+ ";
+		// wall will be present if the cell has does not link to its neighbor. To make
+		// this easy to code, we can always put a '|' as the first character, then a
+		// space for the cell, and then check if the cell has an east neighbor. If it
+		// does, do not put a '|', etc. For the next row (row without cells), we will re
+		// check the same row and check if it has a south neighbor
 
 		int cellIndex = 0;
 		// beginning row
+		String output = "+ ";
 		for (int i = 0; i < charWidth - 3; i++)
 		{
 			if (i % 2 == 0)
@@ -51,9 +51,10 @@ public class MazeDrawer
 		}
 		output += "+\n";
 		// other rows, excluding first and last row
-
+		// i = row index
 		for (int i = 0; i < charHeight - 2; i++)
 		{
+			// first chars
 			if (i % 2 == 0)
 			{
 				output += "|";
@@ -63,23 +64,24 @@ public class MazeDrawer
 				output += "+";
 			}
 
-			// chars
+			// next chars
 			for (int j = 0; j < charWidth - 1; j++)
 			{
 				// if in row 1,3,5,7 (row 0 already filled. In this for loop, they are row 0, 2,
 				// 4, etc) These rows contain cells
 				if (i % 2 == 0)
 				{
-					// even char indexes are walls (remember counting starts at 0)
+					// even char indexes are cells (remember counting starts at 0, the first wall
+					// has already been included)
 					if (j % 2 == 0)
 					{
 						output += " ";
 
 					}
-					// odd char indexes are cells
+					// odd char indexes are walls
 					else
 					{
-						if (cells.get(cellIndex).hasWestNeighbor())
+						if (cells.get(cellIndex).hasEastNeighbor())
 						{
 							output += " ";
 						}
@@ -112,7 +114,10 @@ public class MazeDrawer
 					}
 				}
 			}
-			cellIndex = cellIndex - maze.getWidth();
+			if (i % 2 == 0)
+			{
+				cellIndex = cellIndex - maze.getWidth();
+			}
 			output += "\n";
 
 		}

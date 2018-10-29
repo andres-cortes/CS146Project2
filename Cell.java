@@ -54,9 +54,29 @@ public class Cell
 		return color;
 	}
 
-	public boolean hasWestNeighbor()
+	public Cell getWest()
 	{
-		if (west == null)
+		return west;
+	}
+
+	public Cell getEast()
+	{
+		return east;
+	}
+
+	public Cell getNorth()
+	{
+		return north;
+	}
+
+	public Cell getSouth()
+	{
+		return south;
+	}
+
+	public boolean hasEastNeighbor()
+	{
+		if (east == null)
 		{
 			return false;
 		}
