@@ -138,6 +138,7 @@ public class MazeDrawer
 		System.out.println(output);
 	}
 
+	// you can do these next two functions?
 	public void drawSolvedPathBFS()
 	{
 
