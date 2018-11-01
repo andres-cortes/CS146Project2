@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
+//COMMENT
 public class Maze
 {
 	private int height;
