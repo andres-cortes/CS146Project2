@@ -9,6 +9,7 @@ public class Maze
 	private int totalCells;
 	private ArrayList<Cell> cells;
 
+	//test
 	public Maze(int height, int width)
 	{
 		this.height = height;
