@@ -164,10 +164,22 @@ public class Maze
 	}
 	
 	//set cells white for solving after it's drawn
-	private void setCellsWhite() {
+	private void setCellsWhite() 
+	{
 		for(Cell c: cells) {
+		
 			c.setColor(0);
 		}
+	}
+
+	public void solveBFS()
+	{
+		setCellsWhite();
+	}
+
+	public void solveDFS()
+	{
+		setCellsWhite();
 	}
 
 	public int getHeight()
