@@ -2,7 +2,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Queue;
 
-public class CellQueue implements Queue
+public class CellQueue implements Queue<Cell>
 {
 
 	@Override
@@ -27,7 +27,7 @@ public class CellQueue implements Queue
 	}
 
 	@Override
-	public Iterator iterator()
+	public Iterator<Cell> iterator()
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -41,7 +41,7 @@ public class CellQueue implements Queue
 	}
 
 	@Override
-	public Object[] toArray(Object[] a)
+	public <T> T[] toArray(T[] a)
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -55,28 +55,28 @@ public class CellQueue implements Queue
 	}
 
 	@Override
-	public boolean containsAll(Collection c)
+	public boolean containsAll(Collection<?> c)
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean addAll(Collection c)
+	public boolean addAll(Collection<? extends Cell> c)
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean removeAll(Collection c)
+	public boolean removeAll(Collection<?> c)
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean retainAll(Collection c)
+	public boolean retainAll(Collection<?> c)
 	{
 		// TODO Auto-generated method stub
 		return false;
@@ -90,42 +90,42 @@ public class CellQueue implements Queue
 	}
 
 	@Override
-	public boolean add(Object e)
+	public boolean add(Cell e)
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean offer(Object e)
+	public boolean offer(Cell e)
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Object remove()
+	public Cell remove()
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Object poll()
+	public Cell poll()
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Object element()
+	public Cell element()
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Object peek()
+	public Cell peek()
 	{
 		// TODO Auto-generated method stub
 		return null;
