@@ -23,6 +23,33 @@ public class MazeDrawer
 
 	public void drawUnsolved()
 	{
+
+		System.out.println(draw(0));
+	}
+
+	// you can do these next two functions?
+	public void drawSolvedPathBFS()
+	{
+
+	}
+
+	public void drawSolvedTimedBFS()
+	{
+
+	}
+
+	public void drawSolvedPathDFS()
+	{
+
+	}
+
+	public void drawSolvedTimedDFS()
+	{
+
+	}
+
+	private String draw(int caller)
+	{
 		// algorithm for drawing cells:
 		// the top row of ASCII characters will only be '-' and '+', with the exception
 		// of one space above index 0. The bottom row is the same, but the space is
@@ -75,7 +102,8 @@ public class MazeDrawer
 					// has already been included)
 					if (j % 2 == 0)
 					{
-						output += " ";
+						if (caller == 0)
+							output += " ";
 
 					}
 					// odd char indexes are walls
@@ -134,28 +162,6 @@ public class MazeDrawer
 			}
 		}
 		output += "+ +\n";
-
-		System.out.println(output);
-	}
-
-	// you can do these next two functions?
-	public void drawSolvedPathBFS()
-	{
-
-	}
-
-	public void drawSolvedTimedBFS()
-	{
-
-	}
-
-	public void drawSolvedPathDFS()
-	{
-
-	}
-
-	public void drawSolvedTimedDFS()
-	{
-
+		return output;
 	}
 }

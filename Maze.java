@@ -9,7 +9,6 @@ public class Maze
 	private int totalCells;
 	private ArrayList<Cell> cells;
 
-	// I AM TESTING
 	public Maze(int height, int width)
 	{
 		this.height = height;
@@ -158,9 +157,13 @@ public class Maze
 						}
 					}
 				} // end inner while loop (make sure a direction is chosen)
-
 			} // end else
 		} // end outer while loop (visit all cells)
+	}
+
+	public void solveBFS()
+	{
+
 	}
 
 	public int getHeight()
