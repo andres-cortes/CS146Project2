@@ -175,8 +175,17 @@ public class Maze
 	public void solveBFS()
 	{
 		setCellsWhite();
-		Stack<Cell> path = new Stack<>();
+		PriorityQeueu<Cell> path = new PriorityQeueu<>();
 		Cell currentCell = cells.get(0);
+		
+		while(currentCell != cells.get(totalCells - 1)) {
+			if(currentCell.getColor() == 0) {
+				path.add(currentCell);
+				currentCell.setColor(1);
+			}
+			
+			
+		}
 		
 	}
 
