@@ -9,6 +9,7 @@ public class Maze
 	private int totalCells;
 	private ArrayList<Cell> cells;
 
+	// I AM TESTING
 	public Maze(int height, int width)
 	{
 		this.height = height;
@@ -157,14 +158,16 @@ public class Maze
 						}
 					}
 				} // end inner while loop (make sure a direction is chosen)
+
 			} // end else
 		} // end outer while loop (visit all cells)
 	}
-
-	private void setCellsWhite()
+	
+	//set cells white for solving after it's drawn
+	private void setCellsWhite() 
 	{
-		for (Cell c : cells)
-		{
+		for(Cell c: cells) {
+		
 			c.setColor(0);
 		}
 	}
@@ -172,6 +175,9 @@ public class Maze
 	public void solveBFS()
 	{
 		setCellsWhite();
+		Stack<Cell> path = new Stack<>();
+		Cell currentCell = cells.get(0);
+		
 	}
 
 	public void solveDFS()
