@@ -163,7 +163,8 @@ public class Maze
 		} // end outer while loop (visit all cells)
 	}
 	
-	private void setCellsWHite() {
+	//set cells white for solving after it's drawn
+	private void setCellsWhite() {
 		for(Cell c: cells) {
 			c.setColor(0);
 		}
