@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
-//COMMENT
 public class Maze
 {
 	private int height;
@@ -10,7 +9,7 @@ public class Maze
 	private int totalCells;
 	private ArrayList<Cell> cells;
 
-	//test
+	// I AM TESTING
 	public Maze(int height, int width)
 	{
 		this.height = height;
