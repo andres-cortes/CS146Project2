@@ -75,6 +75,7 @@ public class Cell
 		return south;
 	}
 
+	//neighbor cell is a cell you can move to, aka does not have wall between current cell and neighbor
 	public boolean hasEastNeighbor()
 	{
 		if (east == null)
@@ -87,6 +88,24 @@ public class Cell
 	public boolean hasSouthNeighbor()
 	{
 		if (south == null)
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean hasWestNeighbor()
+	{
+		if (west == null)
+		{
+			return false;
+		}
+		return true;
+	}
+
+	public boolean hasNorthNeighbor()
+	{
+		if (north == null)
 		{
 			return false;
 		}

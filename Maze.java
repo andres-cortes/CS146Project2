@@ -162,6 +162,12 @@ public class Maze
 			} // end else
 		} // end outer while loop (visit all cells)
 	}
+	
+	private void setCellsWHite() {
+		for(Cell c: cells) {
+			c.setColor(0);
+		}
+	}
 
 	public int getHeight()
 	{
