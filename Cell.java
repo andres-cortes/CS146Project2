@@ -9,6 +9,7 @@ public class Cell
 	private Cell east;
 	private Cell north;
 	private Cell south;
+	private int timeDisc;
 
 	public Cell()
 	{
@@ -74,7 +75,18 @@ public class Cell
 		return south;
 	}
 
-	//neighbor cell is a cell you can move to, aka does not have wall between current cell and neighbor
+	public int getTimeDisc()
+	{
+		return timeDisc;
+	}
+
+	public void setTimeDisc(int timeDisc)
+	{
+		this.timeDisc = timeDisc;
+	}
+
+	// neighbor cell is a cell you can move to, aka does not have wall between
+	// current cell and neighbor
 	public boolean hasEastNeighbor()
 	{
 		if (east == null)
@@ -92,7 +104,7 @@ public class Cell
 		}
 		return true;
 	}
-	
+
 	public boolean hasWestNeighbor()
 	{
 		if (west == null)
@@ -110,4 +122,5 @@ public class Cell
 		}
 		return true;
 	}
+
 }

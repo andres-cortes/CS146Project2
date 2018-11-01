@@ -160,16 +160,23 @@ public class Maze
 			} // end else
 		} // end outer while loop (visit all cells)
 	}
-	
-	private void setCellsWHite() {
-		for(Cell c: cells) {
+
+	private void setCellsWhite()
+	{
+		for (Cell c : cells)
+		{
 			c.setColor(0);
 		}
 	}
 
 	public void solveBFS()
 	{
+		setCellsWhite();
+	}
 
+	public void solveDFS()
+	{
+		setCellsWhite();
 	}
 
 	public int getHeight()
