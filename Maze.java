@@ -44,7 +44,7 @@ public class Maze
 		// reduce amount of accessing the cell ArrayList
 		Cell current = cells.get(0);
 		int currentIndex = 0;
-		int visitedCells = 1;
+		int visitedCells = 1; // because we start at cell 0 so it's "visited"
 
 		while (visitedCells < totalCells)
 		{
