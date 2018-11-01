@@ -175,6 +175,9 @@ public class Maze
 	public void solveBFS()
 	{
 		setCellsWhite();
+		Stack<Cell> path = new Stack<>();
+		Cell currentCell = cells.get(0);
+		
 	}
 
 	public void solveDFS()
