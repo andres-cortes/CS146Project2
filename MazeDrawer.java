@@ -30,22 +30,26 @@ public class MazeDrawer
 	// you can do these next two functions?
 	public void drawSolvedPathBFS()
 	{
-
+		maze.solveBFS();
+		System.out.println(draw(1));
 	}
 
 	public void drawSolvedTimedBFS()
 	{
-
+		maze.solveBFS();
+		System.out.println(draw(2));
 	}
 
 	public void drawSolvedPathDFS()
 	{
-
+		maze.solveDFS();
+		System.out.println(draw(3));
 	}
 
 	public void drawSolvedTimedDFS()
 	{
-
+		maze.solveDFS();
+		System.out.println(draw(4));
 	}
 
 	private String draw(int caller)
@@ -102,8 +106,29 @@ public class MazeDrawer
 					// has already been included)
 					if (j % 2 == 0)
 					{
-						if (caller == 0)
+						switch (caller)
+						{
+						// case 0: Unsolved call
+						case 0:
 							output += " ";
+							break;
+						// case 1: draw solvedPath BFS
+						case 1:
+							if (cells.get(cellIndex).getColor() == Cell.GREY)
+								output += "#";
+							else
+								output += " ";
+							break;
+						// case 2: draw timed BFS
+						case 2:
+							break;
+						// case 3: draw solvedPath DFS
+						case 3:
+							break;
+						// case 4: draw solvedPath DFS
+						case 4:
+							break;
+						}
 
 					}
 					// odd char indexes are walls

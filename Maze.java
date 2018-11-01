@@ -162,12 +162,13 @@ public class Maze
 			} // end else
 		} // end outer while loop (visit all cells)
 	}
-	
-	//set cells white for solving after it's drawn
-	private void setCellsWhite() 
+
+	// set cells white for solving after it's drawn
+	private void setCellsWhite()
 	{
-		for(Cell c: cells) {
-		
+		for (Cell c : cells)
+		{
+
 			c.setColor(0);
 		}
 	}
@@ -177,6 +178,7 @@ public class Maze
 		setCellsWhite();
 		PriorityQeueu<Cell> path = new PriorityQeueu<>();
 		Cell currentCell = cells.get(0);
+<<<<<<< HEAD
 		
 		while(currentCell != cells.get(totalCells - 1)) {
 			if(currentCell.getColor() == 0) {
@@ -187,6 +189,9 @@ public class Maze
 			
 		}
 		
+=======
+
+>>>>>>> branch 'master' of https://github.com/andres-cortes/CS146Project2.git
 	}
 
 	public void solveDFS()
