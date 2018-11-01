@@ -30,21 +30,25 @@ public class MazeDrawer
 	// you can do these next two functions?
 	public void drawSolvedPathBFS()
 	{
+		maze.solveBFS();
 		System.out.println(draw(1));
 	}
 
 	public void drawSolvedTimedBFS()
 	{
+		maze.solveBFS();
 		System.out.println(draw(2));
 	}
 
 	public void drawSolvedPathDFS()
 	{
+		maze.solveDFS();
 		System.out.println(draw(3));
 	}
 
 	public void drawSolvedTimedDFS()
 	{
+		maze.solveDFS();
 		System.out.println(draw(4));
 	}
 

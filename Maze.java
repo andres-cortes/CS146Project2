@@ -162,12 +162,13 @@ public class Maze
 			} // end else
 		} // end outer while loop (visit all cells)
 	}
-	
-	//set cells white for solving after it's drawn
-	private void setCellsWhite() 
+
+	// set cells white for solving after it's drawn
+	private void setCellsWhite()
 	{
-		for(Cell c: cells) {
-		
+		for (Cell c : cells)
+		{
+
 			c.setColor(0);
 		}
 	}
@@ -177,7 +178,7 @@ public class Maze
 		setCellsWhite();
 		Stack<Cell> path = new Stack<>();
 		Cell currentCell = cells.get(0);
-		
+
 	}
 
 	public void solveDFS()
