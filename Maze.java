@@ -43,7 +43,7 @@ public class Maze
 		// reduce amount of accessing the cell ArrayList
 		Cell current = cells.get(0);
 		int currentIndex = 0;
-		int visitedCells = 1;
+		int visitedCells = 1; // because we start at cell 0 so it's "visited"
 
 		while (visitedCells < totalCells)
 		{
@@ -159,6 +159,12 @@ public class Maze
 				} // end inner while loop (make sure a direction is chosen)
 			} // end else
 		} // end outer while loop (visit all cells)
+	}
+	
+	private void setCellsWHite() {
+		for(Cell c: cells) {
+			c.setColor(0);
+		}
 	}
 
 	public void solveBFS()
