@@ -6,6 +6,9 @@ public class MazeRunner
 		maze.generate(9);
 		MazeDrawer drawer = new MazeDrawer(maze);
 		drawer.drawUnsolved();
+		System.out.println("BFS");
 		drawer.drawSolvedPathBFS();
+		System.out.println("DFS");
+		drawer.drawSolvedPathDFS();
 	}
 }

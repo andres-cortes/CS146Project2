@@ -10,7 +10,7 @@ public class Cell
 	private Cell north;
 	private Cell south;
 	private int timeDisc;
-
+	
 	public Cell()
 	{
 		color = WHITE;
@@ -87,6 +87,24 @@ public class Cell
 
 	// neighbor cell is a cell you can move to, aka does not have wall between
 	// current cell and neighbor
+	
+	//only has one open neighbor that isn't black
+	public boolean DeadEnd() {
+		int n = 0;
+		
+		if(hasEastNeighbor() && east.getColor() != 2)
+			n++;
+		if(hasSouthNeighbor() && south.getColor() != 2)
+			n++;
+		if(hasWestNeighbor() && west.getColor() != 2)
+			n++;
+		if(hasNorthNeighbor() && north.getColor() != 2)
+			n++;
+		
+		return n < 2;
+	}
+	
+	
 	public boolean hasEastNeighbor()
 	{
 		if (east == null)

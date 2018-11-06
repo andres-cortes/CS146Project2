@@ -43,7 +43,7 @@ public class MazeDrawer
 	public void drawSolvedPathDFS()
 	{
 		maze.solveDFS();
-		System.out.println(draw(3));
+		System.out.println(draw(1));
 	}
 
 	public void drawSolvedTimedDFS()
