@@ -2,8 +2,8 @@ public class MazeRunner
 {
 	public static void main(String[] args)
 	{
-		Maze maze = new Maze(7, 7);
-		maze.generate(9);
+		Maze maze = new Maze(10, 10);
+		maze.generate(2);
 		MazeDrawer drawer = new MazeDrawer(maze);
 		drawer.drawUnsolved();
 		System.out.println("BFS");
