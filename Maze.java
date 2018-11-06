@@ -251,34 +251,34 @@ public class Maze
 	{
 		c.setColor(1);
 		c.setTimeDisc(time);
-		
+		//System.out.println(cells.indexOf(c));//debugging
 		//end found return true
 		if(c == cells.get(totalCells - 1)) {
 			return true; 
-		}else if(c.DeadEnd()) { //dead end return false 
+		}else if(c.DeadEnd() && c != cells.get(0)) { //dead end return false 
 			c.setColor(2);
 			return false;
 		}
-		if(c.hasEastNeighbor()) {
+		if(c.hasEastNeighbor() && c.getEast().getColor() == 0) {
 			time++;
-			if(DFSVisit(c.getSouth())) {
+			if(DFSVisit(c.getEast())) {
 				return true;
 			}
 		}
-		if(c.hasSouthNeighbor()) {
+		if(c.hasSouthNeighbor() && c.getSouth().getColor() == 0) {
 			time++;
 			if(DFSVisit(c.getSouth())) {
 				return true;
 			}
 			
-		}if(c.hasWestNeighbor()) {
+		}if(c.hasWestNeighbor() && c.getWest().getColor() == 0) {
 			time++;
-			if(DFSVisit(c.getSouth())) {
+			if(DFSVisit(c.getWest())) {
 				return true;
 			}
-		}if(c.hasNorthNeighbor()) {
+		}if(c.hasNorthNeighbor() && c.getNorth().getColor() == 0) {
 			time++;
-			if(DFSVisit(c.getSouth())) {
+			if(DFSVisit(c.getNorth())) {
 				return true;
 			}
 		}

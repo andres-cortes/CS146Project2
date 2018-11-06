@@ -18,6 +18,7 @@ public class Cell
 		east = null;
 		north = null;
 		south = null;
+		timeDisc = -1; //when not discovered 
 	}
 
 	public void setWest(Cell input)

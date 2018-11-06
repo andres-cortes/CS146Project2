@@ -8,7 +8,9 @@ public class MazeRunner
 		drawer.drawUnsolved();
 		System.out.println("BFS");
 		drawer.drawSolvedPathBFS();
+		drawer.drawSolvedTimedBFS();
 		System.out.println("DFS");
 		drawer.drawSolvedPathDFS();
+		drawer.drawSolvedTimedDFS();
 	}
 }
