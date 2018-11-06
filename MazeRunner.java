@@ -4,6 +4,7 @@ public class MazeRunner
 {
 	public static void main(String[] args)
 	{
+
 		Scanner reader = new Scanner(System.in); // Reading from System.in
 		boolean valid = false;
 		int size = 0;
