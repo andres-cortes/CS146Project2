@@ -24,7 +24,6 @@ public class MazeRunner
 		}
 		System.out.println("\nGraph Size:" + "\nMAZE:");
 		Maze maze = new Maze(size, size);
-		Maze maze = new Maze(10, 10);
 		maze.generate(2);
 		MazeDrawer drawer = new MazeDrawer(maze);
 		drawer.drawUnsolved();
