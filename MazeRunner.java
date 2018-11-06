@@ -4,7 +4,7 @@ public class MazeRunner
 {
 	public static void main(String[] args)
 	{
-<<<<<<< HEAD
+
 		Scanner reader = new Scanner(System.in); // Reading from System.in
 		boolean valid = false;
 		int size = 0;
@@ -25,9 +25,6 @@ public class MazeRunner
 		}
 		System.out.println("\nGraph Size:" + "\nMAZE:");
 		Maze maze = new Maze(size, size);
-=======
-		Maze maze = new Maze(10, 10);
->>>>>>> branch 'master' of https://github.com/andres-cortes/CS146Project2.git
 		maze.generate(2);
 		MazeDrawer drawer = new MazeDrawer(maze);
 		drawer.drawUnsolved();
