@@ -166,19 +166,20 @@ public class Maze
 		} // end outer while loop (visit all cells)
 	}
 
-	// set cells white for solving after it's drawn
-	private void setCellsWhite()
+	// set cells white for solving after it's drawn and time discovered -1
+	private void erase()
 	{
 		for (Cell c : cells)
 		{
 
 			c.setColor(0);
+			c.setTimeDisc(-1);
 		}
 	}
 
 	public void solveBFS()
 	{
-		setCellsWhite();
+		erase();
 		time = 0;
 		Queue<Cell> queue = new LinkedList<Cell>();
 		Cell currentCell = cells.get(0);
@@ -241,43 +242,41 @@ public class Maze
 
 	public void solveDFS()
 	{
-		setCellsWhite();
+		erase();
 		time = 0;
 		DFSVisit(cells.get(0));
 
 	}
 	
+	//returns true if found the end
 	private boolean DFSVisit(Cell c) 
 	{
 		c.setColor(1);
 		c.setTimeDisc(time);
+		time++;
 		//System.out.println(cells.indexOf(c));//debugging
 		//end found return true
 		if(c == cells.get(totalCells - 1)) {
 			return true; 
-		}else if(c.DeadEnd() && c != cells.get(0)) { //dead end return false 
+		}else if(c.DeadEnd() && c != cells.get(0)) { //dead end return false
 			c.setColor(2);
 			return false;
 		}
 		if(c.hasEastNeighbor() && c.getEast().getColor() == 0) {
-			time++;
 			if(DFSVisit(c.getEast())) {
 				return true;
 			}
 		}
 		if(c.hasSouthNeighbor() && c.getSouth().getColor() == 0) {
-			time++;
 			if(DFSVisit(c.getSouth())) {
 				return true;
 			}
 			
 		}if(c.hasWestNeighbor() && c.getWest().getColor() == 0) {
-			time++;
 			if(DFSVisit(c.getWest())) {
 				return true;
 			}
 		}if(c.hasNorthNeighbor() && c.getNorth().getColor() == 0) {
-			time++;
 			if(DFSVisit(c.getNorth())) {
 				return true;
 			}
