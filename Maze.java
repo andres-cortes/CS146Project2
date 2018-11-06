@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
 
@@ -8,6 +10,7 @@ public class Maze
 	private int width;
 	private int totalCells;
 	private ArrayList<Cell> cells;
+	private int time;
 
 	// I AM TESTING
 	public Maze(int height, int width)
@@ -176,14 +179,112 @@ public class Maze
 	public void solveBFS()
 	{
 		setCellsWhite();
-		Stack<Cell> path = new Stack<>();
+		time = 0;
+		Queue<Cell> queue = new LinkedList<Cell>();
 		Cell currentCell = cells.get(0);
+		currentCell.setColor(1);
+		currentCell.setTimeDisc(time);
+		time++;
+		
+		while(currentCell != cells.get(totalCells - 1)) {
+			//System.out.println("processing " + currentCell.getTimeDisc() + " " + cells.indexOf(currentCell)); //debugging
+			if(!currentCell.DeadEnd() || currentCell == cells.get(0)) {
+				if(currentCell.hasEastNeighbor() && currentCell.getEast().getColor() == 0) {
+					queue.add(currentCell.getEast());
+					currentCell.getEast().setTimeDisc(time);
+					time++;
+					
+				}
+				if(currentCell.hasWestNeighbor() && currentCell.getWest().getColor() == 0) {
+					queue.add(currentCell.getWest());
+					currentCell.getWest().setTimeDisc(time);
+					time++;
+					
+				}
+				if(currentCell.hasSouthNeighbor() && currentCell.getSouth().getColor() == 0) {
+					queue.add(currentCell.getSouth());
+					currentCell.getSouth().setTimeDisc(time);
+					time++;
+					
+				}
+				if(currentCell.hasNorthNeighbor() && currentCell.getNorth().getColor() == 0) {
+					queue.add(currentCell.getNorth());
+					currentCell.getNorth().setTimeDisc(time);
+					time++;
+					
+				}
+				currentCell.setColor(1);
+			}
+			else{ 
+				while(currentCell.DeadEnd() && currentCell != cells.get(0)) {
+					currentCell.setColor(2);
+					//System.out.println(currentCell.DeadEnd() + " i = " + cells.indexOf(currentCell)); //debugging
+					if(currentCell.hasEastNeighbor() && currentCell.getEast().getColor() != 2)
+							currentCell = currentCell.getEast();
+					else if(currentCell.hasSouthNeighbor() && currentCell.getSouth().getColor() != 2)
+							currentCell = currentCell.getSouth();
+					else if(currentCell.hasWestNeighbor() && currentCell.getWest().getColor() != 2)
+							currentCell = currentCell.getWest();
+					else if(currentCell.hasNorthNeighbor() && currentCell.getNorth().getColor() != 2)
+							currentCell = currentCell.getNorth();
+						
+					}
+				}
+				currentCell = queue.poll();
+			}
+		
+		currentCell.setColor(1);
+ 
+		
 
 	}
 
 	public void solveDFS()
 	{
 		setCellsWhite();
+		time = 0;
+		DFSVisit(cells.get(0));
+
+	}
+	
+	private boolean DFSVisit(Cell c) 
+	{
+		c.setColor(1);
+		c.setTimeDisc(time);
+		//System.out.println(cells.indexOf(c));//debugging
+		//end found return true
+		if(c == cells.get(totalCells - 1)) {
+			return true; 
+		}else if(c.DeadEnd() && c != cells.get(0)) { //dead end return false 
+			c.setColor(2);
+			return false;
+		}
+		if(c.hasEastNeighbor() && c.getEast().getColor() == 0) {
+			time++;
+			if(DFSVisit(c.getEast())) {
+				return true;
+			}
+		}
+		if(c.hasSouthNeighbor() && c.getSouth().getColor() == 0) {
+			time++;
+			if(DFSVisit(c.getSouth())) {
+				return true;
+			}
+			
+		}if(c.hasWestNeighbor() && c.getWest().getColor() == 0) {
+			time++;
+			if(DFSVisit(c.getWest())) {
+				return true;
+			}
+		}if(c.hasNorthNeighbor() && c.getNorth().getColor() == 0) {
+			time++;
+			if(DFSVisit(c.getNorth())) {
+				return true;
+			}
+		}
+		
+		c.setColor(2);
+		return false;
 	}
 
 	public int getHeight()

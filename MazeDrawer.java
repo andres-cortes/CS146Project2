@@ -43,13 +43,13 @@ public class MazeDrawer
 	public void drawSolvedPathDFS()
 	{
 		maze.solveDFS();
-		System.out.println(draw(3));
+		System.out.println(draw(1));
 	}
 
 	public void drawSolvedTimedDFS()
 	{
 		maze.solveDFS();
-		System.out.println(draw(4));
+		System.out.println(draw(2));
 	}
 
 	private String draw(int caller)
@@ -121,13 +121,16 @@ public class MazeDrawer
 							break;
 						// case 2: draw timed BFS
 						case 2:
+							int timeDisc = cells.get(cellIndex).getTimeDisc();
+							if (timeDisc> -1) {
+								if(timeDisc > 9)
+									timeDisc = timeDisc % 10;
+								output += timeDisc;
+							}
+							else
+								output += " ";
 							break;
-						// case 3: draw solvedPath DFS
-						case 3:
-							break;
-						// case 4: draw solvedPath DFS
-						case 4:
-							break;
+						
 						}
 
 					}
