@@ -186,58 +186,65 @@ public class Maze
 		currentCell.setColor(1);
 		currentCell.setTimeDisc(time);
 		time++;
-		
-		while(currentCell != cells.get(totalCells - 1)) {
-			//System.out.println("processing " + currentCell.getTimeDisc() + " " + cells.indexOf(currentCell)); //debugging
-			if(!currentCell.DeadEnd() || currentCell == cells.get(0)) {
-				if(currentCell.hasEastNeighbor() && currentCell.getEast().getColor() == 0) {
+
+		while (currentCell != cells.get(totalCells - 1))
+		{
+			// System.out.println("processing " + currentCell.getTimeDisc() + " " +
+			// cells.indexOf(currentCell)); //debugging
+			if (!currentCell.DeadEnd() || currentCell == cells.get(0))
+			{
+				if (currentCell.hasEastNeighbor() && currentCell.getEast().getColor() == 0)
+				{
 					queue.add(currentCell.getEast());
 					currentCell.getEast().setTimeDisc(time);
 					time++;
-					
+
 				}
-				if(currentCell.hasWestNeighbor() && currentCell.getWest().getColor() == 0) {
+				if (currentCell.hasWestNeighbor() && currentCell.getWest().getColor() == 0)
+				{
 					queue.add(currentCell.getWest());
 					currentCell.getWest().setTimeDisc(time);
 					time++;
-					
+
 				}
-				if(currentCell.hasSouthNeighbor() && currentCell.getSouth().getColor() == 0) {
+				if (currentCell.hasSouthNeighbor() && currentCell.getSouth().getColor() == 0)
+				{
 					queue.add(currentCell.getSouth());
 					currentCell.getSouth().setTimeDisc(time);
 					time++;
-					
+
 				}
-				if(currentCell.hasNorthNeighbor() && currentCell.getNorth().getColor() == 0) {
+				if (currentCell.hasNorthNeighbor() && currentCell.getNorth().getColor() == 0)
+				{
 					queue.add(currentCell.getNorth());
 					currentCell.getNorth().setTimeDisc(time);
 					time++;
-					
+
 				}
 				currentCell.setColor(1);
 			}
-			else{ 
-				while(currentCell.DeadEnd() && currentCell != cells.get(0)) {
+			else
+			{
+				while (currentCell.DeadEnd() && currentCell != cells.get(0))
+				{
 					currentCell.setColor(2);
-					//System.out.println(currentCell.DeadEnd() + " i = " + cells.indexOf(currentCell)); //debugging
-					if(currentCell.hasEastNeighbor() && currentCell.getEast().getColor() != 2)
-							currentCell = currentCell.getEast();
-					else if(currentCell.hasSouthNeighbor() && currentCell.getSouth().getColor() != 2)
-							currentCell = currentCell.getSouth();
-					else if(currentCell.hasWestNeighbor() && currentCell.getWest().getColor() != 2)
-							currentCell = currentCell.getWest();
-					else if(currentCell.hasNorthNeighbor() && currentCell.getNorth().getColor() != 2)
-							currentCell = currentCell.getNorth();
-						
-					}
-				}
-				currentCell = queue.poll();
-			}
-		
-		currentCell.setColor(1);
- 
-		
+					// System.out.println(currentCell.DeadEnd() + " i = " +
+					// cells.indexOf(currentCell)); //debugging
+					if (currentCell.hasEastNeighbor() && currentCell.getEast().getColor() != 2)
+						currentCell = currentCell.getEast();
+					else if (currentCell.hasSouthNeighbor() && currentCell.getSouth().getColor() != 2)
+						currentCell = currentCell.getSouth();
+					else if (currentCell.hasWestNeighbor() && currentCell.getWest().getColor() != 2)
+						currentCell = currentCell.getWest();
+					else if (currentCell.hasNorthNeighbor() && currentCell.getNorth().getColor() != 2)
+						currentCell = currentCell.getNorth();
 
+				}
+			}
+			currentCell = queue.poll();
+		}
+
+		currentCell.setColor(1);
 	}
 
 	public void solveDFS()
@@ -247,41 +254,54 @@ public class Maze
 		DFSVisit(cells.get(0));
 
 	}
-	
-	//returns true if found the end
-	private boolean DFSVisit(Cell c) 
+
+	// returns true if found the end
+	private boolean DFSVisit(Cell c)
 	{
 		c.setColor(1);
 		c.setTimeDisc(time);
 		time++;
-		//System.out.println(cells.indexOf(c));//debugging
-		//end found return true
-		if(c == cells.get(totalCells - 1)) {
-			return true; 
-		}else if(c.DeadEnd() && c != cells.get(0)) { //dead end return false
+		// System.out.println(cells.indexOf(c));//debugging
+		// end found return true
+		if (c == cells.get(totalCells - 1))
+		{
+			return true;
+		}
+		else if (c.DeadEnd() && c != cells.get(0))
+		{ // dead end return false
 			c.setColor(2);
 			return false;
 		}
-		if(c.hasEastNeighbor() && c.getEast().getColor() == 0) {
-			if(DFSVisit(c.getEast())) {
+		if (c.hasEastNeighbor() && c.getEast().getColor() == 0)
+		{
+			if (DFSVisit(c.getEast()))
+			{
 				return true;
 			}
 		}
-		if(c.hasSouthNeighbor() && c.getSouth().getColor() == 0) {
-			if(DFSVisit(c.getSouth())) {
+		if (c.hasSouthNeighbor() && c.getSouth().getColor() == 0)
+		{
+			if (DFSVisit(c.getSouth()))
+			{
 				return true;
 			}
-			
-		}if(c.hasWestNeighbor() && c.getWest().getColor() == 0) {
-			if(DFSVisit(c.getWest())) {
-				return true;
-			}
-		}if(c.hasNorthNeighbor() && c.getNorth().getColor() == 0) {
-			if(DFSVisit(c.getNorth())) {
+
+		}
+		if (c.hasWestNeighbor() && c.getWest().getColor() == 0)
+		{
+			if (DFSVisit(c.getWest()))
+			{
 				return true;
 			}
 		}
-		
+		if (c.hasNorthNeighbor() && c.getNorth().getColor() == 0)
+		{
+			if (DFSVisit(c.getNorth()))
+			{
+				return true;
+			}
+		}
+
 		c.setColor(2);
 		return false;
 	}
