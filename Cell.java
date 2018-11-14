@@ -94,7 +94,7 @@ public class Cell
 	// current cell and neighbor
 
 	// only has one open neighbor that isn't black
-	public boolean DeadEnd()
+	public boolean deadEnd()
 	{
 		int n = 0;
 

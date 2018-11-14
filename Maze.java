@@ -187,7 +187,7 @@ public class Maze
 		{
 			// System.out.println("processing " + currentCell.getTimeDisc() + " " +
 			// cells.indexOf(currentCell)); //debugging
-			if (!currentCell.DeadEnd() || currentCell == cells.get(0))
+			if (!currentCell.deadEnd() || currentCell == cells.get(0))
 			{
 				if (currentCell.hasEastNeighbor() && currentCell.getEast().getColor() == 0)
 				{
@@ -221,7 +221,7 @@ public class Maze
 			}
 			else
 			{
-				while (currentCell.DeadEnd() && currentCell != cells.get(0))
+				while (currentCell.deadEnd() && currentCell != cells.get(0))
 				{
 					currentCell.setColor(2);
 					// System.out.println(currentCell.DeadEnd() + " i = " +
@@ -263,7 +263,7 @@ public class Maze
 		{
 			return true;
 		}
-		else if (c.DeadEnd() && c != cells.get(0))
+		else if (c.deadEnd() && c != cells.get(0))
 		{ // dead end return false
 			c.setColor(2);
 			return false;
