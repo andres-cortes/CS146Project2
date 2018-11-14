@@ -160,6 +160,8 @@ public class Maze
 
 			} // end else
 		} // end outer while loop (visit all cells)
+		current.setColor(Cell.GREY); // last cell is visited, but did not have while loop executed. So change color
+										// to GREY here
 	}
 
 	// set cells white for solving after it's drawn and time discovered -1
@@ -257,10 +259,10 @@ public class Maze
 		c.setColor(1);
 		c.setTimeDisc(time);
 		time++;
-		// System.out.println(cells.indexOf(c));//debugging
 		// end found return true
 		if (c == cells.get(totalCells - 1))
 		{
+			System.out.println("reach");
 			return true;
 		}
 		else if (c.deadEnd() && c != cells.get(0))

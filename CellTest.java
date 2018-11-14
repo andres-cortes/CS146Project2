@@ -8,6 +8,7 @@ class CellTest
 	Cell b;
 	Cell c;
 
+	// simple cell tests are done here. More complicated tests in MazeTest
 	@BeforeEach
 	void setUp() throws Exception
 	{
