@@ -262,7 +262,6 @@ public class Maze
 		// end found return true
 		if (c == cells.get(totalCells - 1))
 		{
-			System.out.println("reach");
 			return true;
 		}
 		else if (c.deadEnd() && c != cells.get(0))
