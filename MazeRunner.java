@@ -25,7 +25,7 @@ public class MazeRunner
 		}
 		System.out.println("\nGraph Size:" + "\nMAZE:");
 		Maze maze = new Maze(size, size);
-		maze.generate(2);
+		maze.generate(5);
 		MazeDrawer drawer = new MazeDrawer(maze);
 		drawer.drawUnsolved();
 		System.out.println("BFS");
@@ -34,6 +34,7 @@ public class MazeRunner
 		System.out.println("DFS");
 		drawer.drawSolvedPathDFS();
 		drawer.drawSolvedTimedDFS();
+		System.out.print("======================\nProgram Completed!\n======================");
 		reader.close();
 	}
 }

@@ -10,7 +10,7 @@ public class Cell
 	private Cell north;
 	private Cell south;
 	private int timeDisc;
-	
+
 	public Cell()
 	{
 		color = WHITE;
@@ -18,27 +18,31 @@ public class Cell
 		east = null;
 		north = null;
 		south = null;
-		timeDisc = -1; //when not discovered 
+		timeDisc = -1; // when not discovered
 	}
 
 	public void setWest(Cell input)
 	{
 		west = input;
+		input.east = this;
 	}
 
 	public void setEast(Cell input)
 	{
 		east = input;
+		input.west = this;
 	}
 
 	public void setNorth(Cell input)
 	{
 		north = input;
+		input.south = this;
 	}
 
 	public void setSouth(Cell input)
 	{
 		south = input;
+		input.north = this;
 	}
 
 	/*
@@ -88,24 +92,24 @@ public class Cell
 
 	// neighbor cell is a cell you can move to, aka does not have wall between
 	// current cell and neighbor
-	
-	//only has one open neighbor that isn't black
-	public boolean DeadEnd() {
+
+	// only has one open neighbor that isn't black
+	public boolean DeadEnd()
+	{
 		int n = 0;
-		
-		if(hasEastNeighbor() && east.getColor() != 2)
+
+		if (hasEastNeighbor() && east.getColor() != 2)
 			n++;
-		if(hasSouthNeighbor() && south.getColor() != 2)
+		if (hasSouthNeighbor() && south.getColor() != 2)
 			n++;
-		if(hasWestNeighbor() && west.getColor() != 2)
+		if (hasWestNeighbor() && west.getColor() != 2)
 			n++;
-		if(hasNorthNeighbor() && north.getColor() != 2)
+		if (hasNorthNeighbor() && north.getColor() != 2)
 			n++;
-		
+
 		return n < 2;
 	}
-	
-	
+
 	public boolean hasEastNeighbor()
 	{
 		if (east == null)

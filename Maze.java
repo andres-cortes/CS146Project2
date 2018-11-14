@@ -110,7 +110,6 @@ public class Maze
 							chosen = true;
 							// link west cell to current
 							current.setWest(cells.get(next));
-							cells.get(next).setEast(current);
 							// push current onto stack (so we can backtrack if necessary)
 							stack.push(currentIndex);
 							// move current to newly linked cell
@@ -126,7 +125,6 @@ public class Maze
 							int next = possibleNextIndex[1];
 							chosen = true;
 							current.setNorth(cells.get(next));
-							cells.get(next).setSouth(current);
 							stack.push(currentIndex);
 							currentIndex = next;
 							current = cells.get(next);
@@ -140,7 +138,6 @@ public class Maze
 							int next = possibleNextIndex[2];
 							chosen = true;
 							current.setEast(cells.get(next));
-							cells.get(next).setWest(current);
 							stack.push(currentIndex);
 							currentIndex = next;
 							current = cells.get(next);
@@ -154,7 +151,6 @@ public class Maze
 							int next = possibleNextIndex[3];
 							chosen = true;
 							current.setSouth(cells.get(next));
-							cells.get(next).setNorth(current);
 							stack.push(currentIndex);
 							currentIndex = next;
 							current = cells.get(next);
