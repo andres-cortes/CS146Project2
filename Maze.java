@@ -243,6 +243,25 @@ public class Maze
 		}
 
 		currentCell.setColor(1);
+		
+		while(!queue.isEmpty()) {
+			Cell c = queue.poll();
+			c.setColor(2);
+			if(c.hasEastNeighbor() && c.getEast().getColor() == 1 && c.getEast().deadEnd()) {
+				queue.add(c.getEast());
+			}
+			if(c.hasWestNeighbor() && c.getWest().getColor() == 1 && c.getWest().deadEnd()) {
+				queue.add(c.getWest());
+			}
+			if(c.hasNorthNeighbor() && c.getNorth().getColor() == 1 && c.getNorth().deadEnd()) {
+				queue.add(c.getNorth());
+			}
+			if(c.hasSouthNeighbor() && c.getSouth().getColor() == 1 && c.getSouth().deadEnd()) {
+				queue.add(c.getSouth());
+			}
+			
+			
+		}
 	}
 
 	public void solveDFS()

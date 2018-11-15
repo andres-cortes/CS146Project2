@@ -21,35 +21,45 @@ public class MazeDrawer
 		cells = maze.getCells();
 	}
 
-	public void drawUnsolved()
+	public String drawUnsolved()
 	{
 
-		System.out.println(draw(0));
+		String maze = draw(0);
+		System.out.println(maze);
+		return maze;
 	}
 
 	// you can do these next two functions?
-	public void drawSolvedPathBFS()
+	public String drawSolvedPathBFS()
 	{
 		maze.solveBFS();
-		System.out.println(draw(1));
+		String solved = draw(1);
+		System.out.println(solved);
+		return solved;
 	}
 
-	public void drawSolvedTimedBFS()
+	public String drawSolvedTimedBFS()
 	{
 		maze.solveBFS();
-		System.out.println(draw(2));
+		String solved = draw(2);
+		System.out.println(solved);
+		return solved;
 	}
 
-	public void drawSolvedPathDFS()
+	public String drawSolvedPathDFS()
 	{
 		maze.solveDFS();
-		System.out.println(draw(1));
+		String solved = draw(1);
+		System.out.println(solved);
+		return solved;
 	}
 
-	public void drawSolvedTimedDFS()
+	public String drawSolvedTimedDFS()
 	{
 		maze.solveDFS();
-		System.out.println(draw(2));
+		String solved = draw(2);
+		System.out.println(solved);
+		return solved;
 	}
 
 	private String draw(int caller)

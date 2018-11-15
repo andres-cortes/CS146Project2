@@ -36,5 +36,6 @@ public class MazeRunner
 		drawer.drawSolvedTimedDFS();
 		System.out.print("======================\nProgram Completed!\n======================");
 		reader.close();
+		
 	}
 }
