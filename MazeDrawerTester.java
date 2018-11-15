@@ -3,7 +3,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+/**
+ * 
+ * Tests 5 different drawn mazes for consistency and correctness.
+ * All mazes are tested empty, solved with DFS, and solved with BFS
+ */
 class MazeDrawerTester
 {
 	Maze maze1, maze2, maze3, maze4, maze5;
@@ -23,6 +27,7 @@ class MazeDrawerTester
 		maze4.generate(2);
 		maze5 = new Maze(6,6);
 		maze5.generate(8);
+		//expected outputs for tests
 		solvedTest1 = "+ +-+-+-+\n" + 
 					  "|# # #| |\n" + 
 					  "+-+-+ + +\n" + 
@@ -89,6 +94,7 @@ class MazeDrawerTester
 	{
 	}
 
+	//tests that the unsolved mazes will display correctly and consistently
 	@Test
 	void testDraw() {
 		Maze test1 = new Maze(4,4);
@@ -143,7 +149,8 @@ class MazeDrawerTester
 		}
 		
 	}
-	
+	//tests the drawn BFS-solved graphs
+	@Test
 	void testDrawBFS()
 	{
 		drawer = new MazeDrawer(maze1);
@@ -197,7 +204,7 @@ class MazeDrawerTester
 			i++;
 		}
 	}
-	
+	//tests the DFS-solved graphs
 	void testDrawDFS()
 	{
 		drawer = new MazeDrawer(maze1);

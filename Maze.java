@@ -185,12 +185,13 @@ public class Maze
 		currentCell.setTimeDisc(time);
 		time++;
 
+		// loop will execute until exit cell is found
 		while (currentCell != cells.get(totalCells - 1))
 		{
-			// System.out.println("processing " + currentCell.getTimeDisc() + " " +
-			// cells.indexOf(currentCell)); //debugging
+			// if cell is not a dead end (starting cell doesnt count as a dead end)
 			if (!currentCell.deadEnd() || currentCell == cells.get(0))
 			{
+				// add neighbors to queue, set discovery time.
 				if (currentCell.hasEastNeighbor() && currentCell.getEast().getColor() == 0)
 				{
 					queue.add(currentCell.getEast());
@@ -217,17 +218,16 @@ public class Maze
 					queue.add(currentCell.getNorth());
 					currentCell.getNorth().setTimeDisc(time);
 					time++;
-
 				}
 				currentCell.setColor(1);
 			}
+			// if a dead end, set color to black, check if neighbors are black as well, if
+			// not, set them black. (for drawer)
 			else
 			{
 				while (currentCell.deadEnd() && currentCell != cells.get(0))
 				{
 					currentCell.setColor(2);
-					// System.out.println(currentCell.DeadEnd() + " i = " +
-					// cells.indexOf(currentCell)); //debugging
 					if (currentCell.hasEastNeighbor() && currentCell.getEast().getColor() != 2)
 						currentCell = currentCell.getEast();
 					else if (currentCell.hasSouthNeighbor() && currentCell.getSouth().getColor() != 2)
@@ -239,31 +239,40 @@ public class Maze
 
 				}
 			}
+			// current cell equal to first cell it saw
 			currentCell = queue.poll();
 		}
 
+		// set current cell grey
 		currentCell.setColor(1);
-		
-		while(!queue.isEmpty()) {
+
+		// backtrack queue to find dead ends, set their color to black (BFS might finish
+		// before visiting all cells,need to set these to black for drawer)
+		while (!queue.isEmpty())
+		{
 			Cell c = queue.poll();
 			c.setColor(2);
-			if(c.hasEastNeighbor() && c.getEast().getColor() == 1 && c.getEast().deadEnd()) {
+			if (c.hasEastNeighbor() && c.getEast().getColor() == 1 && c.getEast().deadEnd())
+			{
 				queue.add(c.getEast());
 			}
-			if(c.hasWestNeighbor() && c.getWest().getColor() == 1 && c.getWest().deadEnd()) {
+			if (c.hasWestNeighbor() && c.getWest().getColor() == 1 && c.getWest().deadEnd())
+			{
 				queue.add(c.getWest());
 			}
-			if(c.hasNorthNeighbor() && c.getNorth().getColor() == 1 && c.getNorth().deadEnd()) {
+			if (c.hasNorthNeighbor() && c.getNorth().getColor() == 1 && c.getNorth().deadEnd())
+			{
 				queue.add(c.getNorth());
 			}
-			if(c.hasSouthNeighbor() && c.getSouth().getColor() == 1 && c.getSouth().deadEnd()) {
+			if (c.hasSouthNeighbor() && c.getSouth().getColor() == 1 && c.getSouth().deadEnd())
+			{
 				queue.add(c.getSouth());
 			}
-			
-			
+
 		}
 	}
 
+	// DFS uses recursive implementation
 	public void solveDFS()
 	{
 		erase();

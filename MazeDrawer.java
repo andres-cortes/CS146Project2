@@ -21,9 +21,10 @@ public class MazeDrawer
 		cells = maze.getCells();
 	}
 
+	// all draw functions use draw() and provide an integer in the argument. 0
+	// signifies drawing an empty graph, 1 draws the path, 2 draws discovery times
 	public String drawUnsolved()
 	{
-
 		String maze = draw(0);
 		System.out.println(maze);
 		return maze;
@@ -132,15 +133,16 @@ public class MazeDrawer
 						// case 2: draw timed BFS
 						case 2:
 							int timeDisc = cells.get(cellIndex).getTimeDisc();
-							if (timeDisc> -1) {
-								if(timeDisc > 9)
+							if (timeDisc > -1)
+							{
+								if (timeDisc > 9)
 									timeDisc = timeDisc % 10;
 								output += timeDisc;
 							}
 							else
 								output += " ";
 							break;
-						
+
 						}
 
 					}
